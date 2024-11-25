@@ -1,16 +1,22 @@
-
+<!--
+ * @Author: weiiiiiu weeiii826@gmail.com
+ * @Date: 2024-11-25 16:40:36
+ * @LastEditors: weiiiiiu weeiii826@gmail.com
+ * @LastEditTime: 2024-11-25 17:11:02
+ * @FilePath: /docs/index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
   <title>考试笔记</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 主题样式 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css" />
   <!-- 文件夹样式 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
-  <!-- 暗黑主题插件样式 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -23,27 +29,45 @@
       name: '考试笔记',
       repo: 'https://github.com/weiiiiiu/Exam-Notes',
       loadSidebar: true,
-      // 设置侧边栏目录最大级数
       subMaxLevel: 3,
-      // 支持子目录
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
       },
-      // 设置目录默认展开层级
-      sidebarDisplayLevel: 1,
-      // 自动跳转到页面顶部
       auto2top: true,
+      // 全文搜索
       search: {
         paths: 'auto',
         placeholder: '搜索',
         noData: '没有找到结果',
-        depth: 6
+        depth: 6,
+        namespace: 'exam-notes'
       },
-      count:{
+      // 字数统计
+      count: {
         countable: true,
-        fontsize:'0.9em',
-        color:'rgb(90,90,90)',
-        language:'chinese'
+        position: 'top',
+        margin: '10px',
+        float: 'right',
+        fontsize: '0.9em',
+        color: 'rgb(90,90,90)',
+        language: 'chinese',
+        localization: {
+          words: "",
+          minute: ""
+        },
+        isExpected: true
+      },
+      // 页面右侧目录
+      toc: {
+        tocMaxLevel: 2,
+        target: 'h2, h3, h4, h5, h6'
+      },
+      // 底部导航
+      pagination: {
+        previousText: '上一页',
+        nextText: '下一页',
+        crossChapter: true,
+        crossChapterText: true
       }
     }
   </script>
@@ -55,10 +79,16 @@
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <!-- 字数统计插件 -->
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
-  <!-- 暗黑主题插件 -->
-  <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
-  <!-- 侧边栏折叠插件 -->
+  <!-- 代码复制 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+  <!-- 底部导航 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
+  <!-- 侧边栏折叠 -->
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <!-- 页面右侧 TOC -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-plugin-toc@1.1.0/dist/docsify-plugin-toc.min.js"></script>
+  <!-- emoji -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
   <!-- 代码高亮 -->
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
