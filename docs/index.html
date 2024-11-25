@@ -6,6 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .to-top {
+      position: fixed;
+      right: 2rem;
+      bottom: 2rem;
+      background: #42b983;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .to-top.show {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
@@ -31,6 +53,26 @@
         language:'chinese'
       }
     }
+
+    // 回到顶部功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const toTop = document.querySelector('.to-top');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+          toTop.classList.add('show');
+        } else {
+          toTop.classList.remove('show');
+        }
+      });
+
+      toTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
