@@ -1,7 +1,6 @@
 * [首页](/)
 
 * 数据结构
-  * [概述](datastructure/README.md)
   * [代码实现](datastructure/code.md)
   * [理论知识](datastructure/theory.md)
 
