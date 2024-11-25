@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <title>考试笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 主题样式 -->
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <!-- 暗黑主题插件样式 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  
 </head>
 <body>
   <div id="app"></div>
@@ -20,6 +22,12 @@
       repo: 'https://github.com/weiiiiiu/Exam-Notes',
       loadSidebar: true,
       subMaxLevel: 3,
+      // 支持子目录
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      // 自动跳转到页面顶部
+      auto2top: true,
       search: {
         paths: 'auto',
         placeholder: '搜索',
@@ -33,12 +41,18 @@
         language:'chinese'
       }
     }
-  
   </script>
+  <!-- docsify -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- 搜索插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- 图片缩放插件 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 字数统计插件 -->
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <!-- 暗黑主题插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
+  <!-- 代码高亮 -->
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
