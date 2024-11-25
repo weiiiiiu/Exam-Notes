@@ -1,0 +1,28 @@
+/* 回到顶部按钮样式 */
+.to-top {
+  position: fixed;
+  right: 25px; 
+  bottom: 25px;
+  height: 40px;
+  width: 40px;
+  background: var(--theme-color, #42b983);
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.to-top:hover {
+  background: var(--theme-color-dark, #3aa776);
+  transform: translateY(-2px);
+}
+
+/* 添加 Font Awesome 图标 */
+.to-top .fa {
+  font-size: 18px;
+} 
