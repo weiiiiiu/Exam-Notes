@@ -6,15 +6,15 @@
 * 先画图，照着写，不多想
 * 有主见，不犹豫（尤其是递归 按照逻辑直接写）
 
-顺序表
+## 顺序表
 
 Seqlist L
 
 * 一维数组 element[]
-* 实际个数 n 
+* 实际个数 n
 * 最大个数 maxSize
 
-遍历
+### 遍历
 
 ```c
 for(int = 0;i<L.n;i++){
@@ -22,17 +22,17 @@ for(int = 0;i<L.n;i++){
 }
 ```
 
-搜索
+### 搜索
 
 ```c
 for(int i=0;i<L.n;i++){
   if(L.element[i]==x){
-    
+  
   }
 }
 ```
 
-添加
+### 添加
 
 ```c
 bool Insert(SeqList *L,int i,int x){
@@ -48,7 +48,7 @@ bool Insert(SeqList *L,int i,int x){
 }
 ```
 
- 删除第i个元素
+ ### 删除第i个元素
 
 ```c
 bool Delete(SeqList *L, int i) {
@@ -62,7 +62,7 @@ bool Delete(SeqList *L, int i) {
 }
 ```
 
-找最大最小
+### 找最大最小
 
 ```c
 int FindMax(seqlist L){
@@ -77,9 +77,7 @@ int FindMax(seqlist L){
 }
 ```
 
-
-
-顺序表中删除所有值重复的元素
+### 顺序表中删除所有值重复的元素
 
 ```c
 void del(SeqList *L) {
@@ -98,14 +96,12 @@ void del(SeqList *L) {
 }
 ```
 
-
-
-顺序表中删除所有值重复的元素 仅保留第一个
+### 顺序表中删除所有值重复的元素 仅保留第一个
 
 ```c
 void del(SeqList *L) {
     int i = 0;  // i指向当前不重复的最后一个元素
-    
+  
     // j遍历整个数组
     for (int j = 1; j < L->n; j++) {
         // 如果当前元素与i指向的元素不同
@@ -114,14 +110,12 @@ void del(SeqList *L) {
             L->element[i] = L->element[j];  // 保存不重复的元素
         }
     }
-    
+  
     L->n = i + 1;  // 更新顺序表长度
 }
 ```
 
-
-
-查找三个有序递增序列的公共元素
+### 查找三个有序递增序列的公共元素
 
 ```c
 #include <math.h>
@@ -136,7 +130,7 @@ int fmax(int a, int b) {
 
 void samekey(int A[], int B[], int C[], int n) {
     int i = 0, j = 0, k = 0;
-    
+  
     while (i < n && j < n && k < n) {
         // 如果三个指针指向的元素相等，找到一个公共元素
         if (A[i] == B[j] && A[i] == C[k]) {
@@ -148,7 +142,7 @@ void samekey(int A[], int B[], int C[], int n) {
         else {
             // 找出三个当前元素中的最大值
             int max_num = fmax(fmax(A[i], B[j]), C[k]);
-            
+          
             // 将小于最大值的指针都向后移动
             if (A[i] < max_num)
                 i++;
@@ -160,14 +154,6 @@ void samekey(int A[], int B[], int C[], int n) {
     }
 }
 ```
-
-
-
-
-
-
-
-
 
 ## 单链表
 
@@ -193,18 +179,16 @@ while (p != NULL) {
 
 ### 在某处停下
 
-* 在a处 
+* 在a处
 
   ```c
   while(p->element!=a) p=p->link
   ```
-
 * 在a前一个停
 
   ```c
   while(p->link->element!=a) p=p->link
   ```
-
 * 在a后一个停
 
   ```c
@@ -212,8 +196,6 @@ while (p != NULL) {
   		p=p->link;
   p=p->link;
   ```
-
-
 
 ### 添加
 
@@ -223,7 +205,6 @@ while (p != NULL) {
   s->link=p->link;
   p->link=s;
   ```
-
 * 插在最后一个
 
   ```c
@@ -231,15 +212,12 @@ while (p != NULL) {
   r->link = s;
   r =s;
   ```
-
 * 插在最前面
 
   ```c
   s->link=L->first;
   L->first=s;
   ```
-
-
 
 ### 删除
 
@@ -262,7 +240,7 @@ L->n--;
 void fun(SingleList *LA, SingleList *LB) {
     Node *PA = LA->first;
     Node *PB = LB->first;
-    
+  
     // 遍历找到两个链表的最后节点
     while (PA->link != LA->first) {
         PA = PA->link;
@@ -287,7 +265,7 @@ void reverseList(SingleList *L) {
     if (L->first == NULL || L->first->link == NULL) {
         return;
     }
-    
+  
     Node *p = NULL;       // 前一个节点
     Node *q = L->first;   // 当前节点
     Node *r = NULL;       // 下一个节点
@@ -306,7 +284,7 @@ void reverseList(SingleList *L) {
 
 ### 单链表数据逆序输出
 
->链表的数据操作用数组   
+> 链表的数据操作用数组
 
 ```c
 void Reverse(SingleList L) {
@@ -326,12 +304,6 @@ void Reverse(SingleList L) {
 }
 ```
 
-
-
-
-
-### 
-
 ### 将链表分成奇偶位置两个链表
 
 ```c
@@ -341,24 +313,24 @@ SingleList* split4(SingleList* A) {
     SingleList* B = (SingleList*)malloc(sizeof(SingleList));
     B->first = NULL;
     B->n = 0;
-    
+  
     // 处理空链表或只有一个节点的情况
     if (A->first == NULL || A->first->link == NULL) {
         return B;
     }
-    
+  
     // ra指向A的尾节点，rb指向B的尾节点，p用于遍历
     Node *ra = A->first;      // A保留奇数位置节点
     Node *rb = B->first;      // B保留偶数位置节点
     Node *p = A->first->link; // p用于遍历
-    
+  
     while (p != NULL) {
         // 处理奇数位置节点（保留在A中）
         ra->link = p;
         ra = p;
         p = p->link;
         A->n++;
-        
+      
         // 处理偶数位置节点（移到B中）
         if (p != NULL) {
             if (B->first == NULL) {  // B为空时特殊处理
@@ -372,11 +344,11 @@ SingleList* split4(SingleList* A) {
             B->n++;
         }
     }
-    
+  
     // 处理尾部，设置两个链表的结束标志
     ra->link = NULL;
     if (rb != NULL) rb->link = NULL;
-    
+  
     return B;
 }
 ```
@@ -390,15 +362,15 @@ SingleList* split5(SingleList* A) {
     SingleList* B = (SingleList*)malloc(sizeof(SingleList));
     B->first = NULL;
     B->n = 0;
-    
+  
     // 处理空链表的情况
     if (A->first == NULL) return B;
-    
+  
     // 初始化指针
     Node *ra = A->first;  // A的尾节点指针
     Node *p = A->first->link;  // 遍历指针
     Node *rb = NULL;      // B的尾节点指针
-    
+  
     // 遍历链表，交替将节点分配给A和B
     while (p != NULL) {
         // 将当前节点保留在A中
@@ -406,7 +378,7 @@ SingleList* split5(SingleList* A) {
         ra = p;
         p = p->link;
         A->n++;
-        
+      
         // 将下一个节点（如果存在）移到B中
         if (p != NULL) {
             if (B->first == NULL) {  // B为空时的特殊处理
@@ -420,16 +392,14 @@ SingleList* split5(SingleList* A) {
             B->n++;
         }
     }
-    
+  
     // 设置两个链表的结束标志
     ra->link = NULL;
     if (rb != NULL) rb->link = NULL;
-    
+  
     return B;
 }
 ```
-
-
 
 ### 正负值分裂
 
@@ -441,14 +411,14 @@ SingleList* split6(SingleList* A) {
     SingleList* B = (SingleList*)malloc(sizeof(SingleList));
     B->first = NULL;
     B->n = 0;
-    
+  
     // 处理空链表的情况
     if (A->first == NULL) return B;
-    
+  
     // 初始化指针
     Node *p = A->first;   // 用于遍历的指针
     Node *rb = NULL;      // B的尾节点指针
-    
+  
     // 遍历链表直到最后一个节点
     while (p->link != NULL) {
         if (p->link->element >= 0) {
@@ -459,7 +429,7 @@ SingleList* split6(SingleList* A) {
             // 负数节点移到B中
             Node *temp = p->link;        // 保存要移动的节点
             p->link = temp->link;        // 从A中删除该节点
-            
+          
             if (B->first == NULL) {      // B为空时的特殊处理
                 B->first = temp;
                 rb = temp;
@@ -470,22 +440,20 @@ SingleList* split6(SingleList* A) {
             B->n++;
         }
     }
-    
+  
     // 设置B链表的结束标志
     if (rb != NULL) rb->link = NULL;
-    
+  
     return B;
 }
 ```
-
-
 
 ### 线性表按顺序表存储，要求删除重复元素，保留第一个
 
 ```c
 void RemoveDuplicates(SeqList *L) {  // 修改为SeqList，因为是顺序表操作
     // 外层循环：遍历每个元素
-    for (int i = 0; i < L->n - 1; i++) {        
+    for (int i = 0; i < L->n - 1; i++) {      
         // 内层循环：将当前元素与后面的所有元素比较
         for (int j = i + 1; j < L->n; j++) {  
             // 如果找到重复元素
@@ -513,12 +481,12 @@ void delete(SingleList *L, int x) {
         free(temp);
         L->n--;
     }
-    
+  
     // 如果链表为空，直接返回
     if (L->first == NULL) {
         return;
     }
-    
+  
     Node *p = L->first;
     while (p != NULL && p->link != NULL) {
         // 找到下一个节点的值为x的节点
@@ -537,12 +505,12 @@ void delete(SingleList *L, int x) {
 
 ### 顺序表中的奇数移到前面，偶数移到后面
 
->快排思想 i遇奇数，j遇偶数互换
+> 快排思想 i遇奇数，j遇偶数互换
 
 ```c
 void Move(SeqList *L) {
     int i = 0, j = L->n - 1;
-    
+  
     while (i < j) {
         // 向后移动i，直到找到偶数
         while (i < j && L->element[i] % 2 != 0) {
@@ -614,8 +582,6 @@ void Delete(SingleList *L, int A, int B) {
 
 ```
 
-
-
 ### 将有序链表A,B合并为有序链表C
 
 ```c
@@ -655,7 +621,7 @@ void Combine(SingleList *LA, SingleList *LB, SingleList *LC) {
         Node *q = (Node *)malloc(sizeof(Node));
         q->element = p->element;
         q->link = NULL;
-        
+      
         if (LC->first == NULL) {
             LC->first = pC = q;
         } else {
@@ -705,38 +671,34 @@ bool Circle_SingleList(List L) {
 
 ```
 
-
-
 ### 判断链表 B 是否为链表 A 的连续子序列
 
 ```c
 bool IsSubsequence(SingleList* A, SingleList* B) {
     if (B->first == NULL) return true;  // 空链表B是任何链表的子序列
     if (A->first == NULL) return false; // A为空但B不为空，返回false
-    
+  
     Node* pA = A->first;
-    
+  
     while (pA != NULL) {
         Node* pB = B->first;
         Node* tempA = pA;
-        
+      
         // 从当前A的节点开始匹配B的所有节点
         while (pB != NULL && tempA != NULL && tempA->element == pB->element) {
             tempA = tempA->link;
             pB = pB->link;
         }
-        
+      
         // 如果B已经匹配完，说明找到了连续子序列
         if (pB == NULL) return true;
-        
+      
         pA = pA->link;
     }
-    
+  
     return false;
 }
 ```
-
-
 
 ### 求两个有序链表交集
 
@@ -748,12 +710,12 @@ SingleList* common(SingleList* A, SingleList* B) {
     C->first = (Node*)malloc(sizeof(Node));  // 创建头结点
     C->first->link = NULL;
     C->n = 0;
-    
+  
     // 初始化工作指针
     Node *p = A->first->link;  // p指向A的第一个实际节点
     Node *q = B->first->link;  // q指向B的第一个实际节点
     Node *r = C->first;        // r指向C的尾节点，初始指向头结点
-    
+  
     // 同时遍历两个链表
     while (p != NULL && q != NULL) {
         if (p->element < q->element) {
@@ -769,26 +731,24 @@ SingleList* common(SingleList* A, SingleList* B) {
             Node *s = (Node*)malloc(sizeof(Node));
             s->element = p->element;  // 复制数据
             s->link = NULL;
-            
+          
             // 将新节点连接到C的尾部
             r->link = s;
             r = s;
             C->n++;  // 更新C的节点计数
-            
+          
             // 两个指针都后移
             p = p->link;
             q = q->link;
         }
     }
-    
+  
     // 设置C的结束标志
     r->link = NULL;
-    
+  
     return C;
 }
 ```
-
-
 
 ### 将链表中偶数节点移到前面、奇数节点移到后面
 
@@ -799,22 +759,22 @@ void moveEvenBeforeOdd(SingleList* L) {
     if (L->first == NULL || L->first->link == NULL) {
         return;
     }
-    
+  
     // 创建头节点
     Node *head = L->first;
-    
+  
     // 创建两个指针，分别指向偶数部分和奇数部分的末尾
     Node *evenTail = head;     // 偶数部分的尾指针
     Node *oddTail = head;      // 奇数部分的尾指针
     Node *curr = head->link;   // 当前处理的节点
-    
+  
     // 标记是否已经有偶数节点
     int hasEven = 0;
-    
+  
     // 第一次遍历：将偶数节点移到前面
     while (curr != NULL) {
         Node *next = curr->link;  // 保存下一个节点
-        
+      
         if (curr->element % 2 == 0) {  // 偶数节点
             if (!hasEven) {
                 // 第一个偶数节点
@@ -831,15 +791,15 @@ void moveEvenBeforeOdd(SingleList* L) {
         } else {  // 奇数节点
             oddTail = curr;
         }
-        
+      
         curr = next;
     }
-    
+  
     // 如果没有偶数节点，直接返回
     if (!hasEven) {
         return;
     }
-    
+  
     // 确保最后一个偶数节点正确连接到第一个奇数节点
     Node *firstOdd = evenTail->link;
     while (firstOdd != NULL && firstOdd->element % 2 == 0) {
@@ -848,8 +808,6 @@ void moveEvenBeforeOdd(SingleList* L) {
     evenTail->link = firstOdd;
 }
 ```
-
-
 
 ### 重排链表
 
@@ -860,7 +818,7 @@ void reorderList(SingleList* L) {
         L->first->link->link == NULL) {
         return;
     }
-    
+  
     // 使用快慢指针找到中点
     Node *fast = L->first->link->link;
     Node *slow = L->first->link;
@@ -868,7 +826,7 @@ void reorderList(SingleList* L) {
         fast = fast->link->link;
         slow = slow->link;
     }
-    
+  
     // 将后半部分链表逆置
     Node *p = slow->link;
     slow->link = NULL;
@@ -878,12 +836,12 @@ void reorderList(SingleList* L) {
         slow->link = p;
         p = tmp;
     }
-    
+  
     // 合并前后两部分
     Node *mid = slow->link;
     Node *beg = L->first->link;
     slow->link = NULL;
-    
+  
     // 交替合并
     while (mid != NULL) {
         Node *tmp = mid->link;
@@ -895,9 +853,7 @@ void reorderList(SingleList* L) {
 }
 ```
 
-
-
- ### 删除并插入
+### 删除并插入
 
 ```c
 // 从链表A中删除从第i个元素起的len个元素，然后插入到B的第j个元素之前
@@ -909,7 +865,7 @@ void deleteAndInsert(SingleList* A, SingleList* B, int i, int len, int j) {
         p = p->link;
         k++;
     }
-    
+  
     // 保存要删除的片段
     Node *r = p->link;
     Node *s;
@@ -921,7 +877,7 @@ void deleteAndInsert(SingleList* A, SingleList* B, int i, int len, int j) {
         A->n--;  // 更新A的节点数
     }
     p->link = r;
-    
+  
     // 定位到B中第j-1个节点
     Node *q = B->first;
     k = 1;
@@ -929,15 +885,13 @@ void deleteAndInsert(SingleList* A, SingleList* B, int i, int len, int j) {
         q = q->link;
         k++;
     }
-    
+  
     // 插入到B中
     s->link = q->link;
     q->link = p->link;
     B->n += len;  // 更新B的节点数
 }
 ```
-
-
 
 ### 处理递增链表
 
@@ -947,11 +901,11 @@ void processIncreasingList(SingleList* L, int x) {
     if (L->first == NULL || L->first->link == NULL) {
         return;
     }
-    
+  
     // 处理小于x的节点
     Node *p = L->first->link;
     Node *tail = p;  // 记录已处理部分的尾节点
-    
+  
     // 将小于x的节点移到前面
     while (p != NULL && p->element < x) {
         Node *s = p->link;
@@ -959,7 +913,7 @@ void processIncreasingList(SingleList* L, int x) {
         L->first->link = p;
         p = s;
     }
-    
+  
     // 删除偶数值节点
     tail->link = p;
     while (tail->link != NULL) {
@@ -974,12 +928,6 @@ void processIncreasingList(SingleList* L, int x) {
     }
 }
 ```
-
-
-
-
-
-
 
 ## 双链表
 
@@ -1020,8 +968,6 @@ bool check(DuList *L) {
 
 ```
 
-
-
 ### 双向链表中值最小的节点移动到链表最前面
 
 ```c
@@ -1030,10 +976,10 @@ void MoveMinToFront(DuList *L) {
     if (L == NULL || L->rlink == NULL) {
         return;
     }
-    
+  
     DuNode *p = L->rlink;      // 从第一个实际节点开始
     DuNode *minNode = p;       // 记录最小值节点
-    
+  
     // 找到值最小的节点
     while (p != NULL) {
         if (p->element < minNode->element) {
@@ -1041,18 +987,18 @@ void MoveMinToFront(DuList *L) {
         }
         p = p->rlink;
     }
-    
+  
     // 如果最小值节点已经在最前面，无需移动
     if (minNode == L->rlink) {
         return;
     }
-    
+  
     // 将最小值节点从原位置断开
     minNode->llink->rlink = minNode->rlink;
     if (minNode->rlink != NULL) {
         minNode->rlink->llink = minNode->llink;
     }
-    
+  
     // 将最小值节点插入到最前面
     minNode->rlink = L->rlink;
     minNode->llink = L;
@@ -1061,23 +1007,13 @@ void MoveMinToFront(DuList *L) {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
 ### 单链表对称
 
 ```c
 bool check(SingleList *L) {
     int a[L->n];  // 数组大小只需要L->n即可
     int k = 0;    // 初始化k为0
-    
+  
     // 将链表元素存入数组
     Node *p = L->first;
     while (p != NULL) {
@@ -1126,7 +1062,6 @@ void PrintDigit(int n){
 }
 ```
 
-
 ##二叉树
 BTNode:
 
@@ -1145,7 +1080,7 @@ type funtree(BinaryTree *bt){
 }
 
 type fun(BTNode *t){
-    
+
 }
 
 ### 求总结点个数
@@ -1219,8 +1154,6 @@ int Count(BTNode *t)
 }
 ```
 
-
-
 ### 交换二叉树的左右子树
 
 ```c
@@ -1238,7 +1171,6 @@ void Swap(BTNode *t) {
     Swap(t->rChild);
 }
 ```
-
 
 ### 计算二叉树高度(左右子树判断)
 
@@ -1279,7 +1211,6 @@ Bool CheckFull(BTNode *t) {
 }
 ```
 
-
 ### 判断一棵二叉树是否是最大堆
 
 ```c
@@ -1304,7 +1235,6 @@ Bool Check(BTNode *t) {
 堆序性：每个节点的值都必须大于或等于其子节点的值。
 */
 ```
-
 
 ### 判断是否为最小堆
 
@@ -1344,12 +1274,12 @@ bool CheckTree(BinaryTree *bt) {
 // 递归检查每个节点是否符合扩充二叉树的条件
 void Check(BTNode *t) {
     if (!t) return;
-    
+  
     // 如果一个节点有一个子节点而没有另一个子节点，设置标志为0
     if ((t->lChild == NULL && t->rChild != NULL) || (t->lChild != NULL && t->rChild == NULL)) {
         flag = 0;
     }
-    
+  
     Check(t->lChild);
     Check(t->rChild);
 }
@@ -1371,19 +1301,19 @@ bool CheckTree(BinaryTree *bt) {
 // 递归检查每个节点是否满足二叉搜索树的性质
 bool Check(BTNode *t) {
     if (!t) return true;  // 空节点认为是二叉搜索树
-    
+  
     // 检查左子树的值是否都小于当前节点
     if (t->lChild && t->lChild->element >= t->element) {
         flag = 0;
         return false;
     }
-    
+  
     // 检查右子树的值是否都大于当前节点
     if (t->rChild && t->rChild->element <= t->element) {
         flag = 0;
         return false;
     }
-    
+  
     // 递归检查左右子树
     return Check(t->lChild) && Check(t->rChild);
 }
@@ -1403,7 +1333,6 @@ Bool Check(SeqList *L) {
   else return 0;
 }
 ```
-
 
 ### 判断一棵二叉搜索树是AVL
 
@@ -1440,11 +1369,9 @@ Bool Check(BTNode *t) {
 */
 ```
 
-
-
 ### 判断是否是AVL搜索树
 
-```c    
+```c
 int flag = 1; 
 Bool CheckTree(BinaryTree *bt) {
     Check(bt->root); // 检查根节点
@@ -1476,7 +1403,7 @@ Bool Check(BTNode *t) {
 ```c
 bool CheckTree(BinaryTree *bt) {
     return Check(bt->root,0,Node(bt->root));
-    
+  
 }
 int Node(BTNode *t) {
     if (!t) return 0;
@@ -1525,14 +1452,13 @@ int Path(BTNode *t,int *ipath,int *epath,int level) {
     if (!t) return 0;
     if (t->lChild == NULL && t->rChild == NULL) 
         epath += level-1;
-    
+  
     else
         ipath+=level-1;
     Path(t->lChild,ipath,epath,++level);
     Path(t->rChild,ipath,epath,++level);
 }
 ```
-
 
 ### 加权路径长度
 
@@ -1586,7 +1512,6 @@ Bool Check(BinaryTree *bt) {
 
 ```
 
-
 ### 删除二叉搜索树最大元素
 
 ```c
@@ -1602,7 +1527,7 @@ void DeleteMax(BinaryTree *bt) {
     if(q->lChild == NULL){
         p->rChild = NULL;
         free(q);
-    }    
+    }  
     else
         p->rChild = q->lChild;
     free(q);
@@ -1617,18 +1542,18 @@ bool Insert(BinaryTree *bt, int e) {
     BTNode *q = (BTNode *)malloc(sizeof(BTNode));
     q->element = e;
     q->lChild = q->rChild = NULL;
-    
+  
     // 空树情况
     if (bt->root == NULL) {
         bt->root = q;
         return true;
     }
-    
+  
     // 查找插入位置
     BTNode *p = bt->root;
     BTNode *parent = NULL;  // 记录父节点
     bool isLeft = false;    // 记录是左子树还是右子树
-    
+  
     while (p != NULL) {
         parent = p;
         if (e < p->element) {
@@ -1639,18 +1564,17 @@ bool Insert(BinaryTree *bt, int e) {
             isLeft = false;
         }
     }
-    
+  
     // 插入新节点
     if (isLeft) {
         parent->lChild = q;
     } else {
         parent->rChild = q;
     }
-    
+  
     return true;
 }
 ```
-
 
 ### 在二叉搜索树中删除一个元素 必存在x且元素为x不同时拥有左右子树
 
@@ -1660,7 +1584,7 @@ bool Delete(BinaryTree *bt, int x) {
     BTNode *p = bt->root;
     BTNode *parent = NULL;
     bool isLeft = false;
-    
+  
     while (p->element != x) {
         parent = p;
         if (x < p->element) {
@@ -1671,7 +1595,7 @@ bool Delete(BinaryTree *bt, int x) {
             isLeft = false;
         }
     }
-    
+  
     // 删除节点p
     if (p->rChild == NULL) {  // 只有左子树
         if (parent == NULL) {
@@ -1694,14 +1618,14 @@ bool Delete(BinaryTree *bt, int x) {
     else {  // 有左右子树
         BTNode *s = p->lChild;
         BTNode *ps = p;
-        
+      
         while (s->rChild != NULL) {  // 找左子树最大值
             ps = s;
             s = s->rChild;
         }
-        
+      
         p->element = s->element;
-        
+      
         if (ps == p) {
             ps->lChild = s->lChild;
         } else {
@@ -1709,33 +1633,32 @@ bool Delete(BinaryTree *bt, int x) {
         }
         p = s;
     }
-    
+  
     free(p);
     return true;
 }
 ```
-
 
 ### 删除二叉树最左侧结点
 
 ```c
 void DeleteLeft(BinaryTree *bt) {
     if (bt->root == NULL) return;  // 空树直接返回
-    
+  
     BTNode *p = bt->root;
-    
+  
     // 如果根节点就是最左节点
     if (p->lChild == NULL) {
         bt->root = p->rChild;      // 根节点的右子树成为新的根
         free(p);
         return;
     }
-    
+  
     // 找到最左节点的父节点
     while (p->lChild->lChild != NULL) {
         p = p->lChild;
     }
-    
+  
     // 删除最左节点
     BTNode *q = p->lChild;         // q指向最左节点
     p->lChild = q->rChild;         // 父节点指向最左节点的右子树
@@ -1743,15 +1666,13 @@ void DeleteLeft(BinaryTree *bt) {
 }
 ```
 
-
-
 ## 邻接矩阵
 
 MGraph mg
 
 * 二维数组 a【】【】
 * 边数e，顶点数n
-* 带权图无边 noEdge  
+* 带权图无边 noEdge
 
 ### 无向图不带权查找
 
@@ -1763,7 +1684,6 @@ bool Find(MGraph *mg,int v1,int v2) {
     else return 0;
 }
 ```
-
 
 ### 添加边有向图
 
@@ -1793,20 +1713,15 @@ void DeleteEdge(MGraph *mg,int v1,int v2) {
 }
 ```
 
-
-
-
-
-
-
 ## 邻接表
 
 * ENode（边节点）:
+
   - adjVex：这条边指向哪个顶点
   - nextArc：指向下一条边
   - w：权重
-
 * LGraph（图结构）:
+
   - a[]：每个顶点的边链表的头指针数组
   - e：图中总共有多少条边
   - n：图中总共有多少个顶点
@@ -1842,27 +1757,26 @@ void AddEdge(LGraph *lg,int v1,int v2) {
 }
 ```
 
-
 ### 删除边无向图
 
 ```c
 void DeleteEdge(LGraph *lg, int v1, int v2) {
     ENode *p = lg->a[v1];      // 当前节点
     ENode *prev = NULL;        // 前一个节点
-    
+  
     // 查找要删除的边
     while (p->adjVex != v2) {
         prev = p;
         p = p->nextArc;
     }
-    
+  
     // 删除边
     if (prev == NULL) {        // 是第一条边
         lg->a[v1] = p->nextArc;
     } else {                   // 不是第一条边
         prev->nextArc = p->nextArc;
     }
-    
+  
     free(p);
     lg->e--;
 }
@@ -1874,9 +1788,9 @@ void DeleteEdge(LGraph *lg, int v1, int v2) {
 bool Degree(MGraph *mg, int v, int *InDegree, int *OutDegree) {
     // 检查顶点是否合法
     if (v < 0 || v >= mg->n) return false;
-    
+  
     *InDegree = *OutDegree = 0;
-    
+  
     // 计算度数
     for (int i = 0; i < mg->n; i++) {
         if (mg->a[v][i] != 0) {     // 第v行非零元素个数是出度
@@ -1886,12 +1800,10 @@ bool Degree(MGraph *mg, int v, int *InDegree, int *OutDegree) {
             (*InDegree)++;
         }
     }
-    
+  
     return true;
 }
 ```
-
-
 
 ### 求出度、入度 邻接表
 
@@ -1899,16 +1811,16 @@ bool Degree(MGraph *mg, int v, int *InDegree, int *OutDegree) {
 bool Degree(LGraph *lg, int v, int *InDegree, int *OutDegree) {
     // 检查顶点是否合法
     if (v < 0 || v >= lg->n) return false;
-    
+  
     *InDegree = *OutDegree = 0;
-    
+  
     // 计算出度：遍历v的边链表
     ENode *p = lg->a[v];
     while (p != NULL) {
         (*OutDegree)++;
         p = p->nextArc;
     }
-    
+  
     // 计算入度：遍历所有顶点的边链表
     for (int i = 0; i < lg->n; i++) {
         p = lg->a[i];
@@ -1919,11 +1831,10 @@ bool Degree(LGraph *lg, int v, int *InDegree, int *OutDegree) {
             p = p->nextArc;
         }
     }
-    
+  
     return true;
 }
 ```
-
 
 ### 求有向不带权图中出度与入度相同点个数
 
@@ -1964,7 +1875,6 @@ void Convert(LGraph *lg,MGraph *mg) {
 }
 ```
 
-
 ### 有向图 邻接矩阵转邻接表
 
 ```c
@@ -1984,8 +1894,6 @@ void Convert(MGraph *mg,LGraph *lg) {
 }
 ```
 
-
-
 ### 有向图按邻接表存储 将出度邻接表改为入度邻接表
 
 ```c
@@ -1993,21 +1901,21 @@ void Convert(LGraph *lgA, LGraph *lgB) {
     // 复制顶点数和边数
     lgB->n = lgA->n;
     lgB->e = lgA->e;
-    
+  
     // 遍历图A的每个顶点
     for (int i = 0; i < lgA->n; i++) {
         ENode *PA = lgA->a[i];
-        
+      
         // 遍历顶点i的所有出边
         while (PA != NULL) {
             // 创建新边节点
             ENode *p = (ENode *)malloc(sizeof(ENode));
             p->adjVex = i;                     // 原来的起点变为终点
-            
+          
             // 头插法插入到B图中
             p->nextArc = lgB->a[PA->adjVex];   // 连接到对应链表
             lgB->a[PA->adjVex] = p;            // 更新头指针
-            
+          
             PA = PA->nextArc;                  // 处理下一条边
         }
     }
@@ -2075,7 +1983,6 @@ bool IsTree(LGraph *lg) {
 }
 ```
 
-
 ### 有向图用邻接表存储，求顶点个数为k的连通分量个数
 
 ```c
@@ -2116,12 +2023,12 @@ int Count(LGraph *lg,int k) {
 bool DFS(LGraph *lg, int u, int visited[], int pathlen, int j) {
     // 剪枝：路径长度超过k，停止搜索
     if (pathlen > k) return false;
-    
+  
     // 找到目标顶点且路径长度为k
     if (u == j && pathlen == k) return true;
-    
+  
     visited[u] = 1;  // 标记当前顶点已访问
-    
+  
     // 遍历当前顶点的所有邻接点
     ENode *p = lg->a[u];
     while (p != NULL) {
@@ -2133,7 +2040,7 @@ bool DFS(LGraph *lg, int u, int visited[], int pathlen, int j) {
         }
         p = p->nextArc;
     }
-    
+  
     visited[u] = 0;  // 回溯：取消标记
     return false;    // 未找到符合条件的路径
 }
@@ -2145,10 +2052,3 @@ bool Path(LGraph *lg, int i, int j, int k) {
 }
 
 ```
-
-
-
-
-
-
-
